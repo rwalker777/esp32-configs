@@ -7,6 +7,8 @@ substitutions:
   project_name: "Athom Technology.Athom Energy Meter(6 Channels)"
   project_version: "2.0.5"
   update_interval: 5s
+  # Flash is good for about 100k writes - so set this to no less than 2 hours
+  flash_write_interval: "4h"
   # Define a domain for this device to use. i.e. iot.home.lan (so device will appear as athom-smart-plug-v2.iot.home.lan in DNS/DHCP logs)
   dns_domain: ".local"
   # Set timezone of the smart plug. Useful if the plug is in a location different to the HA server. Can be entered in unix Country/Area format (i.e. "Australia/Sydney")
@@ -19,6 +21,8 @@ substitutions:
   sntp_server_3: "2.pool.ntp.org"  
   # Enables faster network connections, with last connected SSID being connected to and no full scan for SSID being undertaken
   wifi_fast_connect: "false"
+  # Define sensor logging level: NONE, ERROR, WARN, INFO, DEBUG (Default), VERBOSE, VERY_VERBOSE
+  sensor_log_level: "INFO"
   # Define logging level: NONE, ERROR, WARN, INFO, DEBUG (Default), VERBOSE, VERY_VERBOSE
   log_level: "DEBUG"
   # Enable or disable the use of IPv6 networking on the device
@@ -76,7 +80,7 @@ esp32:
 #     version: recommended
 
 preferences:
-  flash_write_interval: 5min
+  flash_write_interval: "${flash_write_interval}"
 
 api:
   # reboot_timeout: 0s
@@ -86,8 +90,12 @@ ota:
 
 logger:
   baud_rate: 115200
-  level: ${log_level}
   hardware_uart: UART0
+  logs:
+    # by default, every reading will be printed to the UART, which is very slow
+    # This will disable printing the readings but keep other helpful messages
+    sensor: ${sensor_log_level}
+  level: ${log_level}
 
 mdns:
   disabled: false
@@ -562,7 +570,7 @@ text_sensor:
 
 time:
   - platform: sntp
-    id: sntp_time
+    id: local_time
   # Define the timezone of the device
     timezone: "${timezone}"
   # Change sync interval from default 5min to 6 hours (or as set in substitutions)
