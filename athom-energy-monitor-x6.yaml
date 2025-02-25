@@ -570,7 +570,7 @@ text_sensor:
 
 time:
   - platform: sntp
-    id: local_time
+    id: sntp_time
   # Define the timezone of the device
     timezone: "${timezone}"
   # Change sync interval from default 5min to 6 hours (or as set in substitutions)
