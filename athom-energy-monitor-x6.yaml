@@ -116,6 +116,37 @@ esp32_improv:
 dashboard_import:
   package_import_url: github://athom-tech/esp32-configs/athom-energy-monitor-x6.yaml
 
+# these are called references in YAML. They allow you to reuse
+# this configuration in each sensor, while only defining it once
+.defaultfilters:
+  - &throttle_avg
+    # average all raw readings together over a X second span before publishing
+    throttle_average: "${average_time}"
+  - &throttle_time
+    # only send the most recent measurement every X seconds
+    throttle: "${send_update_interval}"
+  - &invert
+    # invert and filter out any values below 0.
+    lambda: 'return max(-x, 0.0f);'
+  - &pos
+    # filter out any values below 0.
+    lambda: 'return max(x, 0.0f);'
+  - &abs
+    # take the absolute value of the value
+    lambda: 'return abs(x);'
+  - &zero
+    # Use for disconnected circuits to return 0
+    lambda: "return 0.0f;"
+  # moving_avg - digitalblur
+  - &moving_avg
+    # we capture a new sample every 0.24 seconds, so the time can
+    # be calculated from the number of samples as n * 0.24.
+    sliding_window_moving_average:
+      # we average over the past 2.88 seconds
+      window_size: 24
+      # we push a new value every 1.44 seconds
+      send_every: 12
+
 globals:
   - id: id_Energy_sum_persist
     type: float
@@ -258,6 +289,7 @@ sensor:
       power:
         name: 'Power_1'
         id: 'Power_1'
+        filter: *pos
       energy:
         id: 'Energy_1'
         name: 'Energy_1_Internal'
@@ -270,6 +302,7 @@ sensor:
       power:
         name: 'Power_2'
         id: 'Power_2'
+        filter: *pos
       energy:
         id: 'Energy_2'
         name: 'Energy_2_Internal'
@@ -282,6 +315,7 @@ sensor:
       power:
         name: 'Power_3'
         id: 'Power_3'
+        filter: *pos
       energy:
         id: 'Energy_3'
         name: 'Energy_3_Internal'
@@ -306,6 +340,7 @@ sensor:
       power:
         name: 'Power_5'
         id: 'Power_5'
+        filter: *pos
       energy:
         id: 'Energy_5'
         name: 'Energy_5_Internal'
@@ -318,6 +353,7 @@ sensor:
       power:
         name: 'Power_6'
         id: 'Power_6'
+        filter: *pos
       energy:
         id: 'Energy_6'
         name: 'Energy_6_Internal'
