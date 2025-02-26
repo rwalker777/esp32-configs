@@ -197,11 +197,13 @@ light:
     id: blue_led
     disabled_by_default: true
     pin: $led_pin
+    internal: true
 
 binary_sensor:
   - platform: status
     name: "Status"
     entity_category: diagnostic
+    internal: true
 
   - platform: gpio
     pin:
@@ -228,6 +230,7 @@ sensor:
     id: wifi_signal_db
     update_interval: 60s
     entity_category: "diagnostic"
+    internal: true
 
   - platform: copy
     source_id: wifi_signal_db
@@ -237,6 +240,7 @@ sensor:
     unit_of_measurement: "Signal %"
     entity_category: "diagnostic"
     device_class: ""
+    internal: true
 
   - platform: bl0906
     id: id_bl0906
@@ -538,10 +542,12 @@ text_sensor:
       name: "Connected SSID"
       id: ssid
       entity_category: diagnostic
+      internal: true
     mac_address:
       name: "Mac Address"
       id: mac_address
       entity_category: diagnostic
+      internal: true
 
   - platform: template
     name: "Last Restart"
