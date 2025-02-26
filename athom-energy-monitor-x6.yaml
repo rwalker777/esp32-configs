@@ -289,7 +289,7 @@ sensor:
       power:
         name: 'Power_1'
         id: 'Power_1'
-        filter: *pos
+        filters: *pos
       energy:
         id: 'Energy_1'
         name: 'Energy_1_Internal'
@@ -302,7 +302,7 @@ sensor:
       power:
         name: 'Power_2'
         id: 'Power_2'
-        filter: *pos
+        filters: *pos
       energy:
         id: 'Energy_2'
         name: 'Energy_2_Internal'
@@ -315,7 +315,7 @@ sensor:
       power:
         name: 'Power_3'
         id: 'Power_3'
-        filter: *pos
+        filters: *pos
       energy:
         id: 'Energy_3'
         name: 'Energy_3_Internal'
@@ -328,6 +328,7 @@ sensor:
       power:
         name: 'Power_4'
         id: 'Power_4'
+        filters: *pos
       energy:
         id: 'Energy_4'
         name: 'Energy_4_Internal'
@@ -340,7 +341,7 @@ sensor:
       power:
         name: 'Power_5'
         id: 'Power_5'
-        filter: *pos
+        filters: *pos
       energy:
         id: 'Energy_5'
         name: 'Energy_5_Internal'
@@ -353,7 +354,7 @@ sensor:
       power:
         name: 'Power_6'
         id: 'Power_6'
-        filter: *pos
+        filters: *pos
       energy:
         id: 'Energy_6'
         name: 'Energy_6_Internal'
