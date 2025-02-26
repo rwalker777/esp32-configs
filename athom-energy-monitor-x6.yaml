@@ -245,8 +245,9 @@ sensor:
       name: 'Frequency'
       id: 'Frequency'
     temperature:
-      name: 'Temperature'
-      id: 'Temperature'
+      name: 'Module Temperature'
+      id: 'bl0906_Temperature'
+      internal: true
     voltage:
       name: 'Voltage'
       id: 'Voltage'
@@ -254,6 +255,7 @@ sensor:
       current:
         name: 'Current_1'
         id: 'Current_1'
+        internal: true
       power:
         name: 'Power_1'
         id: 'Power_1'
@@ -265,6 +267,7 @@ sensor:
       current:
         name: 'Current_2'
         id: 'Current_2'
+        internal: true
       power:
         name: 'Power_2'
         id: 'Power_2'
@@ -276,6 +279,7 @@ sensor:
       current:
         name: 'Current_3'
         id: 'Current_3'
+        internal: true
       power:
         name: 'Power_3'
         id: 'Power_3'
@@ -287,6 +291,7 @@ sensor:
       current:
         name: 'Current_4'
         id: 'Current_4'
+        internal: true
       power:
         name: 'Power_4'
         id: 'Power_4'
@@ -298,6 +303,7 @@ sensor:
       current:
         name: 'Current_5'
         id: 'Current_5'
+        internal: true
       power:
         name: 'Power_5'
         id: 'Power_5'
@@ -309,6 +315,7 @@ sensor:
       current:
         name: 'Current_6'
         id: 'Current_6'
+        internal: true
       power:
         name: 'Power_6'
         id: 'Power_6'
