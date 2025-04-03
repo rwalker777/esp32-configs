@@ -15,7 +15,7 @@ substitutions:
   time_update_source: homeassistant
   # Set timezone of the smart plug. Useful if the plug is in a location different to the HA server. Can be entered in unix Country/Area format (i.e. "Australia/Sydney")
   timezone: ""
-  # Set the duration between the sntp service polling ntp.org servers for an update
+  # Set the duration between time sync
   time_update_interval: 6h
   # Enables faster network connections, with last connected SSID being connected to and no full scan for SSID being undertaken
   wifi_fast_connect: "false"
@@ -105,11 +105,23 @@ wifi:
   domain: "${dns_domain}"
 
 captive_portal:
-
-improv_serial:
+  timeout: 60 # Set the timeout in seconds (default is 60)
 
 esp32_improv:
   authorizer: none
+  wifi_timeout: 1min
+  on_start:
+    then:
+      - logger.log: "Improv awaiting authorization/authorized"
+  on_provisioning:
+    then:
+      - logger.log: "Improv provisioning"
+  on_provisioned:
+    then:
+      - logger.log: "Improv provisioned"
+  on_stop:
+    then:
+      - logger.log: "Improv stopped"
 
 dashboard_import:
   package_import_url: github://athom-tech/esp32-configs/athom-energy-monitor-x6.yaml
