@@ -114,16 +114,24 @@ esp32_improv:
   wifi_timeout: 1min
   on_start:
     then:
-      - logger.log: "Improv awaiting authorization/authorized"
+      - logger.log: 
+          format: "Improv awaiting authorization/authorized"
+          level: INFO
   on_provisioning:
     then:
-      - logger.log: "Improv provisioning"
+      - logger.log: 
+          format: "Improv provisioning"
+          level: INFO
   on_provisioned:
     then:
-      - logger.log: "Improv provisioned"
+      - logger.log: 
+          format: "Improv provisioned"
+          level: INFO
   on_stop:
     then:
-      - logger.log: "Improv stopped"
+      - logger.log: 
+          format: "Improv stopped"
+          level: INFO
 
 dashboard_import:
   package_import_url: github://athom-tech/esp32-configs/athom-energy-monitor-x6.yaml
