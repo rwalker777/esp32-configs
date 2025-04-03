@@ -106,6 +106,9 @@ wifi:
 
 captive_portal:
 
+esp32_ble:
+  enable_on_boot: false
+
 esp32_improv:
   authorizer: none
   wifi_timeout: 1min
