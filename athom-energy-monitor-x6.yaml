@@ -105,7 +105,6 @@ wifi:
   domain: "${dns_domain}"
 
 captive_portal:
-  timeout: 60 # Set the timeout in seconds (default is 60)
 
 esp32_improv:
   authorizer: none
