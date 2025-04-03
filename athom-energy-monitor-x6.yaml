@@ -107,7 +107,7 @@ wifi:
 captive_portal:
 
 esp32_ble:
-  enable_on_boot: false
+  enable_on_boot: false # Disable Bluetooth on start.  Improv will enable when needed.
 
 esp32_improv:
   authorizer: none
