@@ -588,6 +588,10 @@ button:
         - bl0906.reset_energy: id_bl0906
 
 text_sensor:
+  - platform: version
+    name: "ESPHome Version"
+    icon: "mdi:car-esp"
+    internal: True
   - platform: wifi_info
     ip_address:
       name: "IP Address"
