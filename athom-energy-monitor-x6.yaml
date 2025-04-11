@@ -614,12 +614,14 @@ text_sensor:
     icon: mdi:clock
     entity_category: diagnostic
     device_class: timestamp
+    internal: True
 
   - platform: template
     name: "Uptime"
     id: uptimes
     icon: mdi:clock-start
     entity_category: diagnostic
+    internal: True
     lambda: |-
       int seconds = (id(uptime_sensor).state);
       int days = seconds / (24 * 3600);
@@ -650,6 +652,7 @@ time:
   # Publish the time the device was last restarted
     on_time_sync:
       then:
+        - logger.log: "Synchronized system clock"
         # Update last restart time, but only once.
         - if:
             condition:
