@@ -393,6 +393,7 @@ sensor:
   - platform: copy
     name: 'Total_Energy'
     id: Energy_sum_persist
+    state_class: total_increasing
     source_id: Energy_sum
     filters:
       - lambda: |-
@@ -415,6 +416,7 @@ sensor:
   - platform: copy
     name: 'Energy_1'
     id: Energy_1_persist
+    state_class: total_increasing
     source_id: Energy_1
     filters:
       - lambda: |-
@@ -437,6 +439,7 @@ sensor:
   - platform: copy
     name: 'Energy_2'
     id: Energy_2_persist
+    state_class: total_increasing
     source_id: Energy_2
     filters:
       - lambda: |-
@@ -459,6 +462,7 @@ sensor:
   - platform: copy
     name: 'Energy_3'
     id: Energy_3_persist
+    state_class: total_increasing
     source_id: Energy_3
     filters:
       - lambda: |-
@@ -481,6 +485,7 @@ sensor:
   - platform: copy
     name: 'Energy_4'
     id: Energy_4_persist
+    state_class: total_increasing
     source_id: Energy_4
     filters:
       - lambda: |-
@@ -503,6 +508,7 @@ sensor:
   - platform: copy
     name: 'Energy_5'
     id: Energy_5_persist
+    state_class: total_increasing
     source_id: Energy_5
     filters:
       - lambda: |-
@@ -525,6 +531,7 @@ sensor:
   - platform: copy
     name: 'Energy_6'
     id: Energy_6_persist
+    state_class: total_increasing
     source_id: Energy_6
     filters:
       - lambda: |-
