@@ -54,7 +54,7 @@ esphome:
   friendly_name: "${friendly_name}"
   area: "${room}"
   name_add_mac_suffix: true
-  min_version: 2024.9.2
+  min_version: 2025.7.0
   project:
     name: "${project_name}"
     version: "${project_version}"
@@ -106,12 +106,10 @@ wifi:
 
 captive_portal:
 
-esp32_ble:
-  enable_on_boot: false # Disable Bluetooth on start.  Improv will enable when needed.
+improv_serial:
 
 esp32_improv:
   authorizer: none
-  wifi_timeout: 1min
   on_start:
     then:
       - logger.log: 
