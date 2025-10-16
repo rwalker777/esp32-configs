@@ -137,12 +137,6 @@ dashboard_import:
 # these are called references in YAML. They allow you to reuse
 # this configuration in each sensor, while only defining it once
 .defaultfilters:
-  - &throttle_avg
-    # average all raw readings together over a X second span before publishing
-    throttle_average: "${average_time}"
-  - &throttle_time
-    # only send the most recent measurement every X seconds
-    throttle: "${send_update_interval}"
   - &invert
     # invert and filter out any values below 0.
     lambda: 'return max(-x, 0.0f);'
