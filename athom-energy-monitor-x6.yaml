@@ -102,7 +102,6 @@ network:
   enable_ipv6: ${ipv6_enable}
 
 wifi:
-  ap: {}
   fast_connect: "${wifi_fast_connect}"
   domain: "${dns_domain}"
 
