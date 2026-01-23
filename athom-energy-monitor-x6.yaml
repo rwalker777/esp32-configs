@@ -103,6 +103,7 @@ network:
 
 wifi:
   ap:
+  power_save_mode: none
   fast_connect: "${wifi_fast_connect}"
   domain: "${dns_domain}"
 
