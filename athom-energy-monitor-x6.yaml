@@ -4,7 +4,7 @@ substitutions:
   # Allows ESP device to be automatically lined to an 'Area' in Home Assistant. Typically used for areas such as 'Lounge Room', 'Kitchen' etc
   room: ""
   device_description: "Athom BL0906 energy meter (6 channels)"
-  project_name: "Athom Technology.Athom Energy Meter(6 Channels)"
+  project_name: "Athom Technology.Energy Meter(6 Channels)"
   project_version: "2026.4.0"
   update_interval: 5s
   # Flash is good for about 100k writes - so set this to no less than 2 hours
