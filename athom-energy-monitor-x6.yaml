@@ -5,7 +5,7 @@ substitutions:
   room: ""
   device_description: "Athom BL0906 energy meter (6 channels)"
   project_name: "Athom Technology.Energy Meter(6 Channels)"
-  project_version: "2026.4.0"
+  project_version: "2026.5.0"
   update_interval: 5s
   # Flash is good for about 100k writes - so set this to no less than 2 hours
   flash_write_interval: "4h"
@@ -51,7 +51,7 @@ esphome:
 esp32:
   board: esp32-c3-devkitm-1
   flash_size: 4MB
-  variant: ESP32C3
+  # variant: ESP32C3 # REMOVED: variant is now automatically inferred from the board
   framework:
     type: esp-idf
     version: recommended
@@ -64,6 +64,7 @@ api:
 
 ota:
   - platform: esphome
+    allow_partition_access: true
 
 logger:
   baud_rate: 115200
@@ -82,14 +83,14 @@ network:
   enable_ipv6: ${ipv6_enable}
 
 wifi:
-  ap:
+  ap: {}
   power_save_mode: none
-  fast_connect: "${wifi_fast_connect}"
+  fast_connect: ${wifi_fast_connect}
   domain: "${dns_domain}"
   on_connect:
     then:
       - logger.log: "Wi-Fi connected. Disabling Bluetooth Improv..."
-      - ble.disable:
+      - esp32_ble.disable:
 
 captive_portal:
 
@@ -226,10 +227,10 @@ light:
     internal: true
 
 binary_sensor:
-  - platform: status
-    name: "Status"
-    entity_category: diagnostic
-    internal: true
+  # - platform: status # REMOVED: This platform no longer exists. Use text_sensor 'status' or wifi_info instead.
+  #   name: "Status"
+  #   entity_category: diagnostic
+  #   internal: true
 
   - platform: gpio
     pin:
