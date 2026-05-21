@@ -64,7 +64,6 @@ api:
 
 ota:
   - platform: esphome
-    allow_partition_access: true
 
 logger:
   baud_rate: 115200
