@@ -90,7 +90,7 @@ wifi:
   on_connect:
     then:
       - logger.log: "Wi-Fi connected. Disabling Bluetooth Improv..."
-      - esp32_ble.disable:
+      - ble.disable:
 
 captive_portal:
 
